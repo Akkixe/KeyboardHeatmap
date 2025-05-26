@@ -379,6 +379,9 @@ MigrationBackup/
 .idea/**/dynamic.xml
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
+.idea/**/encodings.xml
+.idea/**/indexLayout.xml
+.idea/**/vcs.xml
 
 # Gradle
 .idea/**/gradle.xml
