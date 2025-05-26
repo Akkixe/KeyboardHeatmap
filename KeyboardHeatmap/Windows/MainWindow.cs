@@ -6,12 +6,15 @@ using Dalamud.Interface.Windowing;
 using ImGuiNET;
 using Lumina.Excel.Sheets;
 
-namespace SamplePlugin.Windows;
+namespace KeyboardHeatmap.Windows;
 
 public class MainWindow : Window, IDisposable
 {
     private string GoatImagePath;
     private Plugin Plugin;
+
+    public string LastUsedAction { get; set; } = string.Empty;
+    public string LastUsedActionLocation { get; set; } = string.Empty;
 
     // We give this window a hidden ID using ##
     // So that the user will see "My Amazing Window" as window title,
@@ -88,7 +91,8 @@ public class MainWindow : Window, IDisposable
 
                 // ExtractText() should be the preferred method to read Lumina SeStrings,
                 // as ToString does not provide the actual text values, instead gives an encoded macro string.
-                ImGui.TextUnformatted($"Our current job is ({localPlayer.ClassJob.RowId}) \"{localPlayer.ClassJob.Value.Abbreviation.ExtractText()}\"");
+                ImGui.TextUnformatted($"{LastUsedAction} is the last used action ID.");
+                ImGui.TextUnformatted($"{LastUsedActionLocation} is the last used action location.");
 
                 // Example for quarrying Lumina directly, getting the name of our current area.
                 var territoryId = Plugin.ClientState.TerritoryType;
